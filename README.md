@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.com/SaenkoJr/backend-project-lvl2.svg?branch=master)](https://travis-ci.com/SaenkoJr/backend-project-lvl2)
+[![Maintainability](https://api.codeclimate.com/v1/badges/8df6343b6d672afb878b/maintainability)](https://codeclimate.com/github/SaenkoJr/backend-project-lvl2/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/8df6343b6d672afb878b/test_coverage)](https://codeclimate.com/github/SaenkoJr/backend-project-lvl2/test_coverage)
 
 # Generate diff
 
