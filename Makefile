@@ -13,6 +13,9 @@ build:
 test:
 	yarn test
 
+test-coverage:
+	yarn test --coverage
+
 watch:
 	yarn test:watch
 
