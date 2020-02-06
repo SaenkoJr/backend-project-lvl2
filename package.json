@@ -19,17 +19,17 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/SaenkoJr/backend-project-lvl2"
   },
   "author": "Maksim Saenko",
   "license": "ISC",
   "bugs": {
-    "url": ""
+    "url": "https://github.com/SaenkoJr/backend-project-lvl2/issuse"
   },
   "jest": {
     "testEnvironment": "node"
   },
-  "homepage": "",
+  "homepage": "https://github.com/SaenkoJr/backend-project-lvl2",
   "dependencies": {
     "commander": "^4.1.0",
     "lodash": "^4.17.15"
