@@ -4,7 +4,7 @@ run:
 	npx babel-node src/bin/gendiff.js
 
 install-deps:
-	yarn install
+	yarn ci
 
 build:
 	rm -rf dist
@@ -12,6 +12,9 @@ build:
 
 test:
 	yarn test
+
+watch:
+	yarn test:watch
 
 lint:
 	npx eslint .
