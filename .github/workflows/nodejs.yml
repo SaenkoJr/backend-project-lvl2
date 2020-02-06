@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [13.x]
+    steps:
+      - uses: actions/checkout@master
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@master
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install, build, and test
+        run: |
+          npm install -g yarn
+          make install
+          make build
+          make test
+        env:
+          CI: true
+      - name: Run linter
+        run: |
+          make lint
+  coverage:
+    needs: [ build ]
+    name: coverage
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-node@master
+      with:
+        node-version: '13.x'
+    - run: | 
+        npm install -g yarn
+        make install
+        make build
+    - uses: paambaati/codeclimate-action@v2.3.0
+      env:
+        CC_TEST_REPORTER_ID: d13238d28e2442f5c038fe186c13567fc1b7677cf3c95b4308ed588fb584dc96
+      with:
+        coverageCommand: make test-coverage
