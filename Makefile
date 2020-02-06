@@ -4,7 +4,7 @@ run:
 	npx babel-node src/bin/gendiff.js
 
 install-deps:
-	yarn ci
+	yarn install
 
 build:
 	rm -rf dist
