@@ -27,3 +27,6 @@ npm install diff-saenkomm
 
 ## YAML
 [![asciicast](https://asciinema.org/a/LigMV9KkQ1Oh3GvOqrVLybMSN.svg)](https://asciinema.org/a/LigMV9KkQ1Oh3GvOqrVLybMSN)
+
+## INI
+[![asciicast](https://asciinema.org/a/xZp1MPmmS4dwY8wNpgzevUuvA.svg)](https://asciinema.org/a/xZp1MPmmS4dwY8wNpgzevUuvA)
