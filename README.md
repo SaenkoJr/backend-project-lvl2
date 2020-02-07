@@ -22,4 +22,8 @@ or
 npm install diff-saenkomm
 ```
 
+## JSON
 [![asciicast](https://asciinema.org/a/Rwi4BltEZOedUIMxasgcsQoLX.svg)](https://asciinema.org/a/Rwi4BltEZOedUIMxasgcsQoLX)
+
+## YAML
+[![asciicast](https://asciinema.org/a/LigMV9KkQ1Oh3GvOqrVLybMSN.svg)](https://asciinema.org/a/LigMV9KkQ1Oh3GvOqrVLybMSN)
