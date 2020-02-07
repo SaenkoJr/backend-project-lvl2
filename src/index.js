@@ -1,9 +1,15 @@
 import fs from 'fs';
+import path from 'path';
 import _ from 'lodash';
 
+import parsers from './parsers';
+
 export default (filepath1, filepath2) => {
-  const before = JSON.parse(fs.readFileSync(filepath1, 'utf-8'));
-  const after = JSON.parse(fs.readFileSync(filepath2, 'utf-8'));
+  const ext = path.extname(filepath1).slice(1);
+  const parser = parsers[ext];
+
+  const before = parser(fs.readFileSync(filepath1, 'utf-8'));
+  const after = parser(fs.readFileSync(filepath2, 'utf-8'));
   const keys = _.union(Object.keys(before), Object.keys(after));
 
   if (_.isEqual(before, after)) {
