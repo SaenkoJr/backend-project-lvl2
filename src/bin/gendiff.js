@@ -5,7 +5,7 @@ import program from 'commander';
 import gendiff from '..';
 
 program
-  .version('0.2.0');
+  .version('0.3.0');
 
 program
   .option('-f, --format [type]', 'output format')
