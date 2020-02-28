@@ -8,7 +8,7 @@ program
   .version('0.3.0');
 
 program
-  .option('-f, --format [type]', 'output format')
+  .option('-f, --format [type]', 'output format', 'f')
   .description('Compares two configuration files and shows a difference.')
   .arguments('<firstConfig> <secondConfig>')
   .action((filepath1, filepath2) => {
