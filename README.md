@@ -25,7 +25,9 @@ npm install diff-saenkomm
 ## Examples
 
 Format as object
+
 [![asciicast](https://asciinema.org/a/qLctRmGJAJ6duiumrTGPzHP6F.svg)](https://asciinema.org/a/qLctRmGJAJ6duiumrTGPzHP6F)
 
 Format as plain text
+
 [![asciicast](https://asciinema.org/a/H0gFQVssJC08YwPLOyILcroHi.svg)](https://asciinema.org/a/H0gFQVssJC08YwPLOyILcroHi)
