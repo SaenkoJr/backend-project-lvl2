@@ -22,11 +22,10 @@ or
 npm install diff-saenkomm
 ```
 
-## JSON
-[![asciicast](https://asciinema.org/a/Rwi4BltEZOedUIMxasgcsQoLX.svg)](https://asciinema.org/a/Rwi4BltEZOedUIMxasgcsQoLX)
+## Examples
 
-## YAML
-[![asciicast](https://asciinema.org/a/LigMV9KkQ1Oh3GvOqrVLybMSN.svg)](https://asciinema.org/a/LigMV9KkQ1Oh3GvOqrVLybMSN)
+Format as object
+[![asciicast](https://asciinema.org/a/qLctRmGJAJ6duiumrTGPzHP6F.svg)](https://asciinema.org/a/qLctRmGJAJ6duiumrTGPzHP6F)
 
-## INI
-[![asciicast](https://asciinema.org/a/xZp1MPmmS4dwY8wNpgzevUuvA.svg)](https://asciinema.org/a/xZp1MPmmS4dwY8wNpgzevUuvA)
+Format as plain text
+[![asciicast](https://asciinema.org/a/H0gFQVssJC08YwPLOyILcroHi.svg)](https://asciinema.org/a/H0gFQVssJC08YwPLOyILcroHi)
