@@ -2,10 +2,10 @@ import fs from 'fs';
 import path from 'path';
 
 import buildAst from './buildAst';
-import render from './render';
+import render from './formatters';
 import parsers from './parsers';
 
-export default (filepath1, filepath2) => {
+export default (filepath1, filepath2, format) => {
   const ext = path.extname(filepath1).slice(1);
   const parser = parsers[ext];
 
@@ -14,5 +14,5 @@ export default (filepath1, filepath2) => {
 
   const ast = buildAst(before, after);
 
-  return render(ast);
+  return render(ast, format);
 };

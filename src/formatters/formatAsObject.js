@@ -16,8 +16,7 @@ const stringify = (data, depth, statusPad) => {
   return `{\n${lines}\n${renderSpace(depth)}}`;
 };
 
-const render = (data) => {
-  // console.log(JSON.stringify(data, null, 2));
+const render = (ast) => {
   const iter = (node, depth) => {
     const spaces = renderSpace(depth);
     const spacesWithStatusMark = renderSpace(depth, 4, 2);
@@ -67,7 +66,7 @@ const render = (data) => {
     return `${spaces}${node.name}: ${node.newValue}`;
   };
 
-  return `{\n${data.children.map((node) => iter(node, 1)).join('\n')}\n}`;
+  return `{\n${ast.children.map((node) => iter(node, 1)).join('\n')}\n}`;
 };
 
 export default render;

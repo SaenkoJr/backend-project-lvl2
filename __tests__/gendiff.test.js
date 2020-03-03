@@ -226,10 +226,18 @@ test('build ast', () => {
   expect(result).toEqual(expected);
 });
 
-test.each(formats)('diff between %s', (format) => {
+test.each(formats)('diff as object (%s)', (format) => {
   const expected = readFile('result2.txt').trim();
 
-  expect(gendiff(getFixturePath(`before2.${format}`), getFixturePath(`after2.${format}`))).toBe(
-    expected,
-  );
+  expect(
+    gendiff(getFixturePath(`before2.${format}`), getFixturePath(`after2.${format}`), 'object'),
+  ).toBe(expected);
+});
+
+test.each(formats)('diff as plain text (%s)', (format) => {
+  const expected = readFile('resultPlain.txt').trim();
+
+  expect(
+    gendiff(getFixturePath(`before2.${format}`), getFixturePath(`after2.${format}`), 'plain'),
+  ).toBe(expected);
 });
