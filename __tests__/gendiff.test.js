@@ -227,17 +227,34 @@ test('build ast', () => {
 });
 
 test.each(formats)('diff as object (%s)', (format) => {
-  const expected = readFile('result2.txt').trim();
+  const expected = readFile('resultObject.txt').trim();
+  const result = gendiff(
+    getFixturePath(`before2.${format}`),
+    getFixturePath(`after2.${format}`),
+    'object',
+  );
 
-  expect(
-    gendiff(getFixturePath(`before2.${format}`), getFixturePath(`after2.${format}`), 'object'),
-  ).toBe(expected);
+  expect(result).toBe(expected);
 });
 
 test.each(formats)('diff as plain text (%s)', (format) => {
   const expected = readFile('resultPlain.txt').trim();
+  const result = gendiff(
+    getFixturePath(`before2.${format}`),
+    getFixturePath(`after2.${format}`),
+    'plain',
+  );
 
-  expect(
-    gendiff(getFixturePath(`before2.${format}`), getFixturePath(`after2.${format}`), 'plain'),
-  ).toBe(expected);
+  expect(result).toBe(expected);
+});
+
+test.each(formats)('diff as json (%s)', (format) => {
+  const expected = readFile('resultJson.json').trim();
+  const result = gendiff(
+    getFixturePath(`before2.${format}`),
+    getFixturePath(`after2.${format}`),
+    'json',
+  );
+
+  expect(result).toEqual(expected);
 });
