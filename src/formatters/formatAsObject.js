@@ -1,72 +1,50 @@
-import _ from 'lodash';
+import { isPlainObject } from 'lodash';
 
 const renderSpace = (depth, spaces = 4, statusPad = 0) => ' '.repeat(depth * spaces - statusPad);
 
-const stringify = (data, depth, statusPad) => {
-  const lines = Object.entries(data)
-    .map(([name, value]) =>
-      (_.isPlainObject(value)
-        ? `${renderSpace(depth + 1, 4, statusPad)}${name}: ${stringify(
-          value,
-          depth + 1,
-          statusPad,
-        )}`
-        : `${renderSpace(depth + 1, 4, statusPad)}${name}: ${value}`))
-    .join('\n');
-  return `{\n${lines}\n${renderSpace(depth)}}`;
+const stringify = (data, depth) => {
+  if (isPlainObject(data)) {
+    const braceSpace = renderSpace(depth);
+
+    const lines = Object.entries(data)
+      .map(([name, value]) =>
+        (isPlainObject(value)
+          ? `${renderSpace(depth + 1, 4)}${name}: ${stringify(value, depth + 1)}`
+          : `${renderSpace(depth + 1, 4)}${name}: ${value}`))
+      .join('\n');
+
+    return `{\n${lines}\n${braceSpace}}`;
+  }
+
+  return data;
 };
 
-const render = (ast) => {
-  const iter = (node, depth) => {
-    const spaces = renderSpace(depth);
-    const spacesWithStatusMark = renderSpace(depth, 4, 2);
+const renders = {
+  added: (node, depth) =>
+    `${renderSpace(depth, 4, 2)}+ ${node.name}: ${stringify(node.newValue, depth)}`,
+  removed: (node, depth) =>
+    `${renderSpace(depth, 4, 2)}- ${node.name}: ${stringify(node.oldValue, depth)}`,
+  changed: (node, depth) =>
+    [
+      `${renderSpace(depth, 4, 2)}- ${node.name}: ${stringify(node.oldValue, depth)}`,
+      `${renderSpace(depth, 4, 2)}+ ${node.name}: ${stringify(node.newValue, depth)}`,
+    ].join('\n'),
+  unchanged: (node, depth, fn) =>
+    (node.type === 'nodesList'
+      ? `${renderSpace(depth)}${node.name}: ${fn(node.children, depth + 1)}`
+      : `${renderSpace(depth)}${node.name}: ${stringify(node.newValue, depth)}`),
+};
 
-    if (node.status === 'added') {
-      if (_.isPlainObject(node.newValue)) {
-        return `${spacesWithStatusMark}+ ${node.name}: ${stringify(node.newValue, depth)}`;
-      }
+const render = (ast, depth = 1) => {
+  const braceSpace = renderSpace(depth - 1);
 
-      return `${spacesWithStatusMark}+ ${node.name}: ${node.newValue}`;
-    }
+  const lines = ast.map((node) => {
+    const renderLine = renders[node.status];
 
-    if (node.status === 'removed') {
-      if (_.isPlainObject(node.oldValue)) {
-        return `${spacesWithStatusMark}- ${node.name}: ${stringify(node.oldValue, depth)}`;
-      }
+    return renderLine(node, depth, render);
+  });
 
-      return `${spacesWithStatusMark}- ${node.name}: ${node.oldValue}`;
-    }
-
-    if (node.status === 'changed') {
-      if (_.isPlainObject(node.oldValue)) {
-        return `${spacesWithStatusMark}- ${node.name}: ${stringify(
-          node.oldValue,
-          depth,
-        )}\n${spacesWithStatusMark}+ ${node.name}: ${node.newValue}`;
-      }
-
-      if (_.isPlainObject(node.newValue)) {
-        return `${spacesWithStatusMark}- ${node.name}: ${node.oldValue}\n${spacesWithStatusMark}+ ${
-          node.name
-        }: ${stringify(node.newValue, depth)}`;
-      }
-
-      return [
-        `${spacesWithStatusMark}- ${node.name}: ${node.oldValue}`,
-        `${spacesWithStatusMark}+ ${node.name}: ${node.newValue}`,
-      ].join('\n');
-    }
-
-    if (node.type === 'nodesList') {
-      return `${spaces}${node.name}: {\n${node.children
-        .map((n) => iter(n, depth + 1))
-        .join('\n')}\n${spaces}}`;
-    }
-
-    return `${spaces}${node.name}: ${node.newValue}`;
-  };
-
-  return `{\n${ast.children.map((node) => iter(node, 1)).join('\n')}\n}`;
+  return `{\n${lines.join('\n')}\n${braceSpace}}`;
 };
 
 export default render;

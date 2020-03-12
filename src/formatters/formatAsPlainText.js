@@ -1,7 +1,7 @@
-import _ from 'lodash';
+import { isPlainObject } from 'lodash';
 
 const renderValue = (value) => {
-  if (_.isPlainObject(value)) {
+  if (isPlainObject(value)) {
     return '[complex value]';
   }
   if (typeof value === 'string') {
@@ -17,24 +17,28 @@ const renders = {
   removed: (name) => `Property '${name}' was deleted\n`,
   changed: (name, oldValue, newValue) =>
     `Property '${name}' was changed from ${renderValue(oldValue)} to ${renderValue(newValue)}\n`,
+  unchanged: (name, oldValue, newValue, meta, fn) =>
+    (meta.type === 'nodesList' ? `${fn(meta.children, name)}\n` : ''),
 };
 
-const render = (ast) => {
-  const iter = (node, path) => {
-    const fullPath = path ? `${path}.${node.name}` : node.name;
+const render = (ast, path) => {
+  const lines = ast.map((node) => {
+    const {
+      name,
+      oldValue,
+      newValue,
+      status,
+      children,
+      type,
+    } = node;
+    const renderLine = renders[status];
+    const fullname = path ? [path, name].join('.') : name;
+    const meta = { children, type };
 
-    if (node.status === 'unchanged') {
-      return node.children
-        .map((child) => iter(child, fullPath))
-        .flat()
-        .join('');
-    }
+    return renderLine(fullname, oldValue, newValue, meta, render);
+  });
 
-    return renders[node.status](fullPath, node.oldValue, node.newValue);
-  };
-
-  return ast.children
-    .map((child) => iter(child))
+  return lines
     .flat()
     .join('')
     .trim();

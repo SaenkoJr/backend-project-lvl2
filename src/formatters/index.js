@@ -12,6 +12,7 @@ export default (ast, format) => {
   try {
     return formatters[format](ast);
   } catch (e) {
-    throw new Error('Unsupported format');
+    console.error(e);
+    throw new Error(`Unsupported ${format} format`);
   }
 };

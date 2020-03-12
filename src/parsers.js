@@ -12,6 +12,6 @@ export default (ext) => {
   try {
     return parsers[ext];
   } catch (e) {
-    throw new Error('Unsupported filetype');
+    throw new Error('Unsupported file extension');
   }
 };
