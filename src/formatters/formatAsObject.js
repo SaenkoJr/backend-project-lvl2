@@ -7,10 +7,9 @@ const stringify = (data, depth) => {
     const braceSpace = renderSpace(depth);
 
     const lines = Object.entries(data)
-      .map(([name, value]) =>
-        (isPlainObject(value)
-          ? `${renderSpace(depth + 1, 4)}${name}: ${stringify(value, depth + 1)}`
-          : `${renderSpace(depth + 1, 4)}${name}: ${value}`))
+      .map(([name, value]) => (isPlainObject(value)
+        ? `${renderSpace(depth + 1, 4)}${name}: ${stringify(value, depth + 1)}`
+        : `${renderSpace(depth + 1, 4)}${name}: ${value}`))
       .join('\n');
 
     return `{\n${lines}\n${braceSpace}}`;
@@ -20,19 +19,15 @@ const stringify = (data, depth) => {
 };
 
 const renders = {
-  added: (node, depth) =>
-    `${renderSpace(depth, 4, 2)}+ ${node.name}: ${stringify(node.newValue, depth)}`,
-  removed: (node, depth) =>
+  added: (node, depth) => `${renderSpace(depth, 4, 2)}+ ${node.name}: ${stringify(node.newValue, depth)}`,
+  removed: (node, depth) => `${renderSpace(depth, 4, 2)}- ${node.name}: ${stringify(node.oldValue, depth)}`,
+  changed: (node, depth) => [
     `${renderSpace(depth, 4, 2)}- ${node.name}: ${stringify(node.oldValue, depth)}`,
-  changed: (node, depth) =>
-    [
-      `${renderSpace(depth, 4, 2)}- ${node.name}: ${stringify(node.oldValue, depth)}`,
-      `${renderSpace(depth, 4, 2)}+ ${node.name}: ${stringify(node.newValue, depth)}`,
-    ].join('\n'),
-  unchanged: (node, depth, fn) =>
-    (node.type === 'nodesList'
-      ? `${renderSpace(depth)}${node.name}: ${fn(node.children, depth + 1)}`
-      : `${renderSpace(depth)}${node.name}: ${stringify(node.newValue, depth)}`),
+    `${renderSpace(depth, 4, 2)}+ ${node.name}: ${stringify(node.newValue, depth)}`,
+  ].join('\n'),
+  unchanged: (node, depth, fn) => (node.type === 'nodesList'
+    ? `${renderSpace(depth)}${node.name}: ${fn(node.children, depth + 1)}`
+    : `${renderSpace(depth)}${node.name}: ${stringify(node.newValue, depth)}`),
 };
 
 const render = (ast, depth = 1) => {

@@ -9,10 +9,9 @@ const formatters = {
 };
 
 export default (ast, format) => {
-  try {
-    return formatters[format](ast);
-  } catch (e) {
-    console.error(e);
+  if (!formatters[format]) {
     throw new Error(`Unsupported ${format} format`);
   }
+
+  return formatters[format](ast);
 };

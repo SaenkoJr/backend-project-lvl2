@@ -9,9 +9,9 @@ const parsers = {
 };
 
 export default (ext) => {
-  try {
-    return parsers[ext];
-  } catch (e) {
+  if (!parsers[ext]) {
     throw new Error('Unsupported file extension');
   }
+
+  return parsers[ext];
 };
