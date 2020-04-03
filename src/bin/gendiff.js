@@ -8,7 +8,7 @@ program.version('0.6.1');
 
 program
   .description('Compares two configuration files and shows a difference.')
-  .option('-f, --format [type]', 'output format', 'object')
+  .option('-f, --format [type]', 'specify output format: pretty, plain, json', 'pretty')
   .arguments('<firstConfig> <secondConfig>')
   .action((filepath1, filepath2) => {
     try {

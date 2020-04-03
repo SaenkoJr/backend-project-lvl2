@@ -10,7 +10,9 @@ const parsers = {
 
 export default (ext) => {
   if (!parsers[ext]) {
-    throw new Error('Unsupported file extension');
+    throw new Error(
+      `Unexpected file extension: ${ext}. Only json, yaml and ini files are supported.`,
+    );
   }
 
   return parsers[ext];

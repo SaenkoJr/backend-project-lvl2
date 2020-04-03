@@ -7,11 +7,11 @@ const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', 
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 
 test.each([
-  ['object', 'json', 'resultObject.txt'],
+  ['pretty', 'json', 'resultObject.txt'],
   ['plain', 'yml', 'resultPlain.txt'],
   ['json', 'ini', 'resultJson.json'],
-])('diff as %s (%s)', (format, ext, resultFile) => {
-  const expected = readFile(resultFile).trim();
+])('diff as %s (%s)', (format, ext, resultFilename) => {
+  const expected = readFile(resultFilename).trim();
   const result = gendiff(
     getFixturePath(`before2.${ext}`),
     getFixturePath(`after2.${ext}`),

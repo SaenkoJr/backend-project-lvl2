@@ -1,7 +1,6 @@
 [
   {
-    "status": "unchanged",
-    "type": "nodesList",
+    "type": "complex",
     "name": "common",
     "oldValue": {
       "setting1": "Value 1",
@@ -31,24 +30,21 @@
     },
     "children": [
       {
-        "status": "unchanged",
-        "type": "node",
+        "type": "unchanged",
         "name": "setting1",
         "oldValue": "Value 1",
         "newValue": "Value 1",
         "children": []
       },
       {
-        "status": "removed",
-        "type": "node",
+        "type": "removed",
         "name": "setting2",
         "oldValue": "200",
         "newValue": null,
         "children": []
       },
       {
-        "status": "changed",
-        "type": "nodesList",
+        "type": "changed",
         "name": "setting3",
         "oldValue": true,
         "newValue": {
@@ -57,39 +53,10 @@
             "que": "42"
           }
         },
-        "children": [
-          {
-            "status": "added",
-            "type": "node",
-            "name": "key",
-            "oldValue": null,
-            "newValue": "value",
-            "children": []
-          },
-          {
-            "status": "added",
-            "type": "nodesList",
-            "name": "test",
-            "oldValue": null,
-            "newValue": {
-              "que": "42"
-            },
-            "children": [
-              {
-                "status": "added",
-                "type": "node",
-                "name": "que",
-                "oldValue": null,
-                "newValue": "42",
-                "children": []
-              }
-            ]
-          }
-        ]
+        "children": []
       },
       {
-        "status": "unchanged",
-        "type": "nodesList",
+        "type": "complex",
         "name": "setting6",
         "oldValue": {
           "key": "value"
@@ -100,16 +67,14 @@
         },
         "children": [
           {
-            "status": "unchanged",
-            "type": "node",
+            "type": "unchanged",
             "name": "key",
             "oldValue": "value",
             "newValue": "value",
             "children": []
           },
           {
-            "status": "added",
-            "type": "node",
+            "type": "added",
             "name": "ops",
             "oldValue": null,
             "newValue": "vops",
@@ -118,45 +83,32 @@
         ]
       },
       {
-        "status": "added",
-        "type": "node",
+        "type": "added",
         "name": "follow",
         "oldValue": null,
         "newValue": false,
         "children": []
       },
       {
-        "status": "added",
-        "type": "node",
+        "type": "added",
         "name": "setting4",
         "oldValue": null,
         "newValue": "blah blah",
         "children": []
       },
       {
-        "status": "added",
-        "type": "nodesList",
+        "type": "added",
         "name": "setting5",
         "oldValue": null,
         "newValue": {
           "key5": "value5"
         },
-        "children": [
-          {
-            "status": "added",
-            "type": "node",
-            "name": "key5",
-            "oldValue": null,
-            "newValue": "value5",
-            "children": []
-          }
-        ]
+        "children": []
       }
     ]
   },
   {
-    "status": "unchanged",
-    "type": "nodesList",
+    "type": "complex",
     "name": "group1",
     "oldValue": {
       "baz": "bas",
@@ -172,24 +124,21 @@
     },
     "children": [
       {
-        "status": "changed",
-        "type": "node",
+        "type": "changed",
         "name": "baz",
         "oldValue": "bas",
         "newValue": "bars",
         "children": []
       },
       {
-        "status": "unchanged",
-        "type": "node",
+        "type": "unchanged",
         "name": "foo",
         "oldValue": "bar",
         "newValue": "bar",
         "children": []
       },
       {
-        "status": "changed",
-        "type": "node",
+        "type": "changed",
         "name": "nest",
         "oldValue": {
           "key": "value"
@@ -200,60 +149,30 @@
     ]
   },
   {
-    "status": "removed",
-    "type": "nodesList",
+    "type": "removed",
     "name": "group2",
     "oldValue": {
       "abc": "12345"
     },
     "newValue": null,
-    "children": [
-      {
-        "status": "removed",
-        "type": "node",
-        "name": "abc",
-        "oldValue": "12345",
-        "newValue": null,
-        "children": []
-      }
-    ]
+    "children": []
   },
   {
-    "status": "added",
-    "type": "nodesList",
+    "type": "added",
     "name": "foo",
     "oldValue": null,
     "newValue": {
       "bar": "42"
     },
-    "children": [
-      {
-        "status": "added",
-        "type": "node",
-        "name": "bar",
-        "oldValue": null,
-        "newValue": "42",
-        "children": []
-      }
-    ]
+    "children": []
   },
   {
-    "status": "added",
-    "type": "nodesList",
+    "type": "added",
     "name": "group3",
     "oldValue": null,
     "newValue": {
       "fee": "100500"
     },
-    "children": [
-      {
-        "status": "added",
-        "type": "node",
-        "name": "fee",
-        "oldValue": null,
-        "newValue": "100500",
-        "children": []
-      }
-    ]
+    "children": []
   }
 ]

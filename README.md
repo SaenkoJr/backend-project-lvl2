@@ -29,8 +29,8 @@ $ gendiff [options] <firstConfig> <secondConfig>
 Compares two configuration files and shows a difference.
 
 Options:
-  -v, --version        Output the version number
-  -f, --format [type]  Specify output format: pretty, plain, json (default: "json")
+  -v, --version        output the version number
+  -f, --format [type]  specify output format: pretty, plain, json (default: "pretty")
   -h, --help           output usage information
 ```
 
