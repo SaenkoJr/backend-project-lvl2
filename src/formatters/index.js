@@ -1,11 +1,11 @@
-import formatAsObject from './formatAsObject';
-import formatAsPlainText from './formatAsPlainText';
-import formatAsJson from './formatAsJson';
+import pretty from './pretty';
+import plain from './plain';
+import json from './json';
 
 const formatters = {
-  pretty: formatAsObject,
-  plain: formatAsPlainText,
-  json: formatAsJson,
+  pretty,
+  plain,
+  json,
 };
 
 export default (ast, format) => {

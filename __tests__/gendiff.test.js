@@ -13,8 +13,8 @@ test.each([
 ])('diff as %s (%s)', (format, ext, resultFilename) => {
   const expected = readFile(resultFilename).trim();
   const result = gendiff(
-    getFixturePath(`before2.${ext}`),
-    getFixturePath(`after2.${ext}`),
+    getFixturePath(`before.${ext}`),
+    getFixturePath(`after.${ext}`),
     format,
   );
 
