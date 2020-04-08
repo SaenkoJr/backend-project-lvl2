@@ -2,46 +2,16 @@
   {
     "type": "complex",
     "name": "common",
-    "oldValue": {
-      "setting1": "Value 1",
-      "setting2": "200",
-      "setting3": true,
-      "setting6": {
-        "key": "value"
-      }
-    },
-    "newValue": {
-      "follow": false,
-      "setting1": "Value 1",
-      "setting4": "blah blah",
-      "setting3": {
-        "key": "value",
-        "test": {
-          "que": "42"
-        }
-      },
-      "setting5": {
-        "key5": "value5"
-      },
-      "setting6": {
-        "key": "value",
-        "ops": "vops"
-      }
-    },
     "children": [
       {
         "type": "unchanged",
         "name": "setting1",
-        "oldValue": "Value 1",
-        "newValue": "Value 1",
-        "children": []
+        "value": "Value 1"
       },
       {
         "type": "removed",
         "name": "setting2",
-        "oldValue": "200",
-        "newValue": null,
-        "children": []
+        "value": "200"
       },
       {
         "type": "changed",
@@ -52,90 +22,57 @@
           "test": {
             "que": "42"
           }
-        },
-        "children": []
+        }
       },
       {
         "type": "complex",
         "name": "setting6",
-        "oldValue": {
-          "key": "value"
-        },
-        "newValue": {
-          "key": "value",
-          "ops": "vops"
-        },
         "children": [
           {
             "type": "unchanged",
             "name": "key",
-            "oldValue": "value",
-            "newValue": "value",
-            "children": []
+            "value": "value"
           },
           {
             "type": "added",
             "name": "ops",
-            "oldValue": null,
-            "newValue": "vops",
-            "children": []
+            "value": "vops"
           }
         ]
       },
       {
         "type": "added",
         "name": "follow",
-        "oldValue": null,
-        "newValue": false,
-        "children": []
+        "value": false
       },
       {
         "type": "added",
         "name": "setting4",
-        "oldValue": null,
-        "newValue": "blah blah",
-        "children": []
+        "value": "blah blah"
       },
       {
         "type": "added",
         "name": "setting5",
-        "oldValue": null,
-        "newValue": {
+        "value": {
           "key5": "value5"
-        },
-        "children": []
+        }
       }
     ]
   },
   {
     "type": "complex",
     "name": "group1",
-    "oldValue": {
-      "baz": "bas",
-      "foo": "bar",
-      "nest": {
-        "key": "value"
-      }
-    },
-    "newValue": {
-      "foo": "bar",
-      "baz": "bars",
-      "nest": "str"
-    },
     "children": [
       {
         "type": "changed",
         "name": "baz",
         "oldValue": "bas",
-        "newValue": "bars",
-        "children": []
+        "newValue": "bars"
       },
       {
         "type": "unchanged",
         "name": "foo",
-        "oldValue": "bar",
-        "newValue": "bar",
-        "children": []
+        "value": "bar"
       },
       {
         "type": "changed",
@@ -143,36 +80,29 @@
         "oldValue": {
           "key": "value"
         },
-        "newValue": "str",
-        "children": []
+        "newValue": "str"
       }
     ]
   },
   {
     "type": "removed",
     "name": "group2",
-    "oldValue": {
+    "value": {
       "abc": "12345"
-    },
-    "newValue": null,
-    "children": []
+    }
   },
   {
     "type": "added",
     "name": "foo",
-    "oldValue": null,
-    "newValue": {
+    "value": {
       "bar": "42"
-    },
-    "children": []
+    }
   },
   {
     "type": "added",
     "name": "group3",
-    "oldValue": null,
-    "newValue": {
+    "value": {
       "fee": "100500"
-    },
-    "children": []
+    }
   }
 ]
