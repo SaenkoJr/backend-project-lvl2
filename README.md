@@ -36,21 +36,7 @@ Options:
 
 ## Examples
 
-Step 3
-
-[![asciicast](https://asciinema.org/a/Rwi4BltEZOedUIMxasgcsQoLX.svg)](https://asciinema.org/a/Rwi4BltEZOedUIMxasgcsQoLX)
-
-Step 5
-
-[![asciicast](https://asciinema.org/a/LigMV9KkQ1Oh3GvOqrVLybMSN.svg)](https://asciinema.org/a/LigMV9KkQ1Oh3GvOqrVLybMSN)
-
-Step 6
-
-[![asciicast](https://asciinema.org/a/xZp1MPmmS4dwY8wNpgzevUuvA.svg)](https://asciinema.org/a/xZp1MPmmS4dwY8wNpgzevUuvA)
-
-Step 7/8/9
-
-Object format
+Pretty format
 
 [![asciicast](https://asciinema.org/a/qLctRmGJAJ6duiumrTGPzHP6F.svg)](https://asciinema.org/a/qLctRmGJAJ6duiumrTGPzHP6F)
 
