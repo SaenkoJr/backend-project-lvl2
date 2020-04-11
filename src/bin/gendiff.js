@@ -4,7 +4,7 @@ import program from 'commander';
 
 import gendiff from '..';
 
-program.version('0.6.2');
+program.version('0.6.3');
 
 program
   .description('Compares two configuration files and shows a difference.')

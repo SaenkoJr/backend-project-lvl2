@@ -1,4 +1,4 @@
-import { isPlainObject, stubString } from 'lodash';
+import { isPlainObject, isNull } from 'lodash';
 
 const stringify = (value) => {
   if (isPlainObject(value)) {
@@ -17,8 +17,8 @@ const renders = {
   changed: ({ name, oldValue, newValue }) => (
     `Property '${name}' was changed from ${stringify(oldValue)} to ${stringify(newValue)}`
   ),
-  complex: (node, fn) => `${fn(node.children, node.name)}`,
-  unchanged: stubString,
+  complex: (node, fn) => fn(node.children, node.name),
+  unchanged: () => null,
 };
 
 const render = (ast, path) => {
@@ -31,7 +31,7 @@ const render = (ast, path) => {
   });
 
   return lines
-    .filter((line) => line.length > 0)
+    .filter((line) => !isNull(line))
     .join('\n')
     .trim();
 };
